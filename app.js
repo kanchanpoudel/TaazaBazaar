@@ -22,7 +22,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 var mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/taazabazaar')
+mongoose.connect('mongodb+srv://Kanch:<funny???>@taazabazaar-mnk0t.gcp.mongodb.net/test?retryWrites=true&w=majority')
+
+
+
+
+/*const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://Kanch:<funny???>@taazabazaar-mnk0t.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});*/
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
