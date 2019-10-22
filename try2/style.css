@@ -52,3 +52,14 @@
 	padding-left: 30px;
 	text-align: center;
 }
+.icon{
+	text-align: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background-color: black;
+	width: 100%;
+	
+
+
+}
