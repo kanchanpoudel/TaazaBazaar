@@ -1,10 +1,12 @@
 var mongoose = require ('mongoose');
-const SellerProfileSchema = new mongoose.Schema({name:String, 
+const ProfileSchema = new mongoose.Schema({name:String, 
+	phone_no:String,
+	password: String,
 location:String,
 products: Object,
-Description:String,
-Reciews: Array,
-NowSellig:Array
+description:String,
+reviews: Array,
+nowSellig:Array
 
 })
-module.exports = mongoose.model('sellerProfiles', SellerProfileSchema)
+module.exports = mongoose.model('Profiles', ProfileSchema)
