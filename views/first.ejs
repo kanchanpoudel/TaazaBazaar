@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>	<link rel = "stylesheet" href = "/style.css">
+	
+	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+	<link rel ="stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>	
+<body>
+
+</head>
+<body>
+	<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<script>
+ <section id = "nav-bar">
+			<nav class="navbar navbar-expand-lg navbar-light">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" area-controls="navbarNav" area-expanded="false" area-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#top">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#about">about</a>
+      </li>
+      
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">contact me</a>
+        <li class="nav-item">
+        <a class="nav-link" href="#cv">Login</a>
+      </li>
+      </li>
+    </ul>
+  </div>
+</nav>	
+</section>
+<div class="middle">
+	<table>
+		<tr>
+			<td>
+	<div id="buy">
+	<button ><a href="/buy" ><img src="/images/img/Buy.jpg" width="350" height="350" alt= "buy" onclick=></a></button></div></td>
+	<td>
+	<div id="sell">
+		<div class="dropdown">
+  <button class="dropbtn"><img  src="/images/img/sell.jpg" width="350" height="350" alt= "sell"  onclick=></button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+	</div></td>
+	<td>
+	<div id="community">
+	<button>	<a href="/community" ><img src="/images/img/community.jpg" width="350" height="350" alt="community" onclick=></a></button>
+	</div></td></tr>
+	</table>
+</div>
+
+
+</body>
+</html>

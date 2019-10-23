@@ -6,6 +6,9 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var mongoose = require ('mongoose');
+mongoose.connect('mongodb://localhost/taazabazaar')
+
 
 var app = express();
 
@@ -21,8 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-var mongoose = require ('mongoose');
-mongoose.connect('mongodb+srv://Kanch:<funny???>@taazabazaar-mnk0t.gcp.mongodb.net/test?retryWrites=true&w=majority')
+
 
 
 
