@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title> 
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+  </head>
+  <body>
+    <h1>Enter Your User Details</h1>
+    <form action="/authenticate" method="post" >
+    	<table>
+    		<tr>
+    			<td>
+    				User Name:<input type="text" name="name">
+    			</td>
+    		</tr>
+            <tr>
+                <td>
+                    Phone Number: <input type="text" name="phone_no">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password: <input type="password" name="password"  id="myInput">
+                    <input type="checkbox" onclick="myFunction()">Show Password
+                </td>
+            </tr>
+    		
+       
+        <button type = "submit">Login</button>
+           </form>
+           
+    
+  </body>
+  <script type="text/javascript">function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}</script>
+</html>
