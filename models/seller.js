@@ -3,7 +3,7 @@ const ProfileSchema = new mongoose.Schema({name:String,
 	phone_no:String,
 	password: String,
 location:String,
-products: Object,
+products: Array,
 description:String,
 reviews: Array,
 nowSellig:Array

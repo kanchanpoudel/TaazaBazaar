@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>User Profile</title>
+<link rel="stylesheets" type="text/css" href="all.css">
+</head>
+<body>
+</br>
+<h1>
+ <%=seller.name%>
+</h1>
+
+
+<p><%=seller.phone_no%></p>
+<ul id= "unorderdlist" class= "seller" >
+  <% seller.products.forEach(function(seller){ %> 
+  <li><div><%=seller%></div></li>
+    
+ <% }) %>
+</ul>
+
+
+
+<script>
+
+
+</script>
+</body>
+
+
