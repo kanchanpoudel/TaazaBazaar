@@ -29,10 +29,4 @@ res.render('edit');
 
 })
 
-
-
-
-
-
-
 module.exports = router;
