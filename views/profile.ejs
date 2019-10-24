@@ -8,7 +8,7 @@
 <h1>
  <%=seller.name%>
 </h1>
-
+<button><a href="/seller/<%= seller._id %>">Edit Profile</a></button>
 
 <p><%=seller.phone_no%></p>
 <p><%=seller.location%></p>
@@ -20,6 +20,12 @@
     
  <% }) %>
 </ul>
+<br>
+<h1>Now Selling</h1>
+<ul>
+	</ul>
+
+<button><a href="/add/<%= seller._id %>">Add Product</a></button>
 
 
 

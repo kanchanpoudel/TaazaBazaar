@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sellers= require('../models/seller')
+var product= require('../models/product')
 
 router.get('/seller', function(req, res, next) {
   //res.render('movies', data);
@@ -35,6 +36,29 @@ res.render('login');
 })
 
 
+router.get('/seller/:_id',  function(req,res, next )    
+  {
+    
+      sellers.findOne({_id: req.params._id}, function(err, seller)
+      {
+
+        res.render('edit', {seller}); })
+    
+  })
+
+
+
+router.get('/add/:_id',  function(req,res, next )    
+  {
+    
+      sellers.findOne({_id: req.params._id}, function(err, seller)
+      {
+
+        res.render('addProducts', {seller}); })
+    
+  })
+
+
 
 
 router.post('/Signup', async function(req, res, next){
@@ -47,7 +71,7 @@ router.post('/Signup', async function(req, res, next){
 		else{
 var productArr =[req.body.vegetables, req.body.fruits, req.body.poultry, req.body.SeedsandSaplings].filter(x => !! x)
 
-			var seller = new sellers({name: req.body.name , loaction: req.body.location , phone_no:req.body.phone_no,
+			var seller = new sellers({name: req.body.name , location: req.body.location , phone_no:req.body.phone_no,
 	password:req.body.password, description:req.body.description, products: productArr
 
 })
@@ -66,6 +90,17 @@ catch(err)
 	}
 })})
 
+
+
+router.post('/updateSeller',  function(req,res, next )
+  { console.log(req.body);
+      sellers.findOneAndUpdate({_id: req.body._id}, {$set: req.body}, function(err, seller)
+      {
+        res.render('profile', {seller})
+        
+    
+  })
+    })
 
 
 
