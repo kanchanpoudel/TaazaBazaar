@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title> 
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+  </head>
+  <body>
+    <h1>Registere here!</h1>
+    <form action="/Signup" method="post" >
+    	<table>
+    		<tr>
+    			<td>
+    				User Name:<input type="text" name="name">
+    			</td>
+    		</tr>
+            <tr>
+                <td>
+                    Phone Number: <input type="text" name="phone_no">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password: <input type="password"  name="password"  id="myInput">
+                    <input type="checkbox" onclick="myFunction()">Show Password
+                </td>
+            </tr>
+    		<tr>
+    			<td>
+    				Location: <input type="text" name="location">
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				Description:<input type="text" name="description" >
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				Products:<input type="checkbox" name="vegetables" value="vegetables">Vegetables
+    				<input type="checkbox" name="fruits" value="fruits">Fruits
+    				<input type="checkbox" name="polutry" value="polutry">Polutry
+    				<input type="checkbox" name="SeedsandSaplings" value="SeedsandSaplings"> Seeds and 
+                    Saplings
+
+    			</td>
+    		</tr>
+            
+    	</table>
+       
+        <button>Sign Up</button>
+           </form>
+           <button><a href= "/login">Have an Account</button>
+    
+  </body>
+  <script type="text/javascript">function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}</script>
+</html>

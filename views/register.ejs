@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title> 
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+  </head>
+  <body>
+    <h1>Edit Profile Details</h1>
+    <form action="Signup" method="post" >
+    	<table>
+    		<tr>
+    			<td>
+    				User Name:<input type="text" value="<%=seller.name%>">
+    			</td>
+    		</tr>
+            <tr>
+                <td>
+                    Phone Number: <input type="text" value="<%=seller.phone_no%>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password: <input type="text" value="<%=seller.password%>">
+                </td>
+            </tr>
+    		<tr>
+    			<td>
+    				Location: <input type="text" value="<%=seller.location%>">
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				Description:<input type="text" value="<%=seller.description%>">
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				Products:<input type="checkbox" name="vegetables" value="">Vegetables
+    				<input type="checkbox" name="fruits" value="">Fruits
+    				<input type="checkbox" name="Polutry" value="">Polutry
+    				<input type="checkbox" name="Seeds and Saplings" value=""> Seeds and 
+                    Saplings
+
+    			</td>
+    		</tr>
+            
+    	</table>
+       
+        <h1>Add Product</h1><br>
+        <input type="text" name="name" placeholder=" Product name">
+        <input type="text" name="Selling" placeholder=" Product Description">
+        <input type ="text" name="price" placeholder="Price ">
+
+            <select name = "Now Seling">
+                <option value= "Fruit">Fruit</option>
+                <option value= "Vegetable">Vegetable</option>
+                <option value= "Poultry">Poultry</option>
+                <option value= "Seed/sapling">Seed/sapling</option>
+               </select>
+               </input>
+           </form>
+    
+  </body>
+</html>
