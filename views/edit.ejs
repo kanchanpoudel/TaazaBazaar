@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+<<<<<<< HEAD
     <title>Login</title> 
     <link rel='stylesheet' href='/stylesheets/style.css'>
   </head>
@@ -11,34 +12,70 @@
     		<tr>
     			<td>
     				User Name:<input type="text" value="<%=seller.name%>">
+=======
+    <title>Register</title> 
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+  </head>
+  <body>
+    <h1>Registere here!</h1>
+    <form action="/Signup" method="post" >
+    	<table>
+    		<tr>
+    			<td>
+    				User Name:<input type="text" name="name">
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
     			</td>
     		</tr>
             <tr>
                 <td>
+<<<<<<< HEAD
                     Phone Number: <input type="text" value="<%=seller.phone_no%>">
+=======
+                    Phone Number: <input type="text" name="phone_no">
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
                 </td>
             </tr>
             <tr>
                 <td>
+<<<<<<< HEAD
                     Password: <input type="text" value="<%=seller.password%>">
+=======
+                    Password: <input type="password"  name="password"  id="myInput">
+                    <input type="checkbox" onclick="myFunction()">Show Password
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
                 </td>
             </tr>
     		<tr>
     			<td>
+<<<<<<< HEAD
     				Location: <input type="text" value="<%=seller.location%>">
+=======
+    				Location: <input type="text" name="location">
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
     			</td>
     		</tr>
     		<tr>
     			<td>
+<<<<<<< HEAD
     				Description:<input type="text" value="<%=seller.description%>">
+=======
+    				Description:<input type="text" name="description" >
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
     			</td>
     		</tr>
     		<tr>
     			<td>
+<<<<<<< HEAD
     				Products:<input type="checkbox" name="vegetables" value="">Vegetables
     				<input type="checkbox" name="fruits" value="">Fruits
     				<input type="checkbox" name="Polutry" value="">Polutry
     				<input type="checkbox" name="Seeds and Saplings" value=""> Seeds and 
+=======
+    				Products:<input type="checkbox" name="vegetables" value="vegetables">Vegetables
+    				<input type="checkbox" name="fruits" value="fruits">Fruits
+    				<input type="checkbox" name="polutry" value="polutry">Polutry
+    				<input type="checkbox" name="SeedsandSaplings" value="SeedsandSaplings"> Seeds and 
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
                     Saplings
 
     			</td>
@@ -46,6 +83,7 @@
             
     	</table>
        
+<<<<<<< HEAD
         <h1>Add Product</h1><br>
         <input type="text" name="name" placeholder=" Product name">
         <input type="text" name="Selling" placeholder=" Product Description">
@@ -62,3 +100,19 @@
     
   </body>
 </html>
+=======
+        <button>Sign Up</button>
+           </form>
+           <button><a href= "/login">Have an Account</button>
+    
+  </body>
+  <script type="text/javascript">function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}</script>
+</html>
+>>>>>>> c5f50dbe81bb05502980625d5075cfc28ce1aae9
