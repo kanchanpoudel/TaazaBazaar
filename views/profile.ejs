@@ -22,8 +22,11 @@
 </ul>
 <br>
 <h1>Now Selling</h1>
-<ul>
-	</ul>
+<ul = "uborderedlist" class="selling">
+	<%seller.NowSelling.forEach(function(selling){%>
+<li>Product: <%=selling.name%>
+<br>
+</ul>
 
 <button><a href="/add/<%= seller._id %>">Add Product</a></button>
 
