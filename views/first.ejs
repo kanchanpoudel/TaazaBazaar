@@ -1,59 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-</head>	<link rel = "stylesheet" href = "style.css">
-	
-	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
-	<link rel ="stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>	
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/animate.css">
+  <link rel="stylesheet" href="/stylesheets/mainbody.css">
+  <link href="https://fonts.googleapis.com/css?family=Prata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+  .bg {
+    background-image: url("images/img/vegie.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+</style>
+</head>
 <body>
- <section id = "nav-bar">
-			<nav class="navbar navbar-expand-lg navbar-light">
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" area-controls="navbarNav" area-expanded="false" area-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="#top">Home </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#about">about</a>
-      </li>
-      
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#contact">contact me</a>
-        <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      </li>
-    </ul>
+
+<div class="bg"></div>
+  <!-- <div class="topnav">
+    <a href="#news">Login</a>
+    <a href="C:/Users/Dell/Desktop/tazabazaar/TaazaBazaar/views/buy.ejs">Buy</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a class="active" href="#home">Home</a>
+  </div> -->
+<div class="centered wow bounceInDown" data-wow-duration="2s" data-wow-delay="0.5s">
+<h1>Taaza Bazaar</h1>
+<div class="seperate wow bounceInUp" data-wow-duration="2s" data-wow-delay="0.5s">
+<p>From my backyard to your kitchen!</p>
+<p>स्वस्थ, स्वछ र भरपर्दो </p>
+</div>
+</div>
+<div class="above">
+    <!-- <div id="wowslider-container">
+        <div class="ws_images"><ul>
+        <li><img src="images/imagefive.jpg" alt="" title="" id="wows_0"></li>
+        <li><img src="images/imagefour.jpg" alt="" title="" id="wows_1"></li>
+        <li><img src="images/imagethree.jpg" alt="" title="" id="wows_2"></li>
+        <li><img src="images/imagefour.jpg" alt="" title="" id="wows_3"></li>
+        </ul></div>
+        <div class="ws_bullets"><div>
+        <img src="tooltips/slide1new.jpg" alt="">
+        <img src="tooltips/slide2new.jpg" alt="">
+        <img src="tooltips/slide3new.jpg" alt="">
+        </div></div>
+          <a href="#" class="ws_frame"></a>
+          <div class="ws_shadow"></div>
+        </div> -->
+ <table>
+<td>
+  <div class="container">
+  <div class="imagehere"><a href=" /buy"><button><img src="images/img/buy copy.png" alt="Buy" class="image" style="width:100%"></button></div>
+  <p>Buy</p>
   </div>
-</nav>	
-</section>
-<div class="middle">
-	<table>
-		<tr>
-			<td>
-	<div id="buy">
-	<button he><a href="buy.html" ><img src="/images/img/Buy.jpg" width="400" height="400" alt= "buy" onclick=></a></button></div></td>
-	<td>
-	<div id="sell">
-		<button><a href="/register" ><img  src="/images/img/sell.jpg" width="400" height="400" alt= "sell"  onclick=></a></button>
-	</div></td>
-	<td>
-	<div id="community">
-	<button>	<a href="community.hmtl" ><img src="/images/img/community.jpg" width="400" height="400" alt="community" onclick=></a></button>
-	</div></td></tr>
-	</table>
+</div>
+</td>
+<td>
+    <div class="container">
+    <div class="imagehere"><a href=" /register"><button><img src="images/img/sell copy.png" alt="Buy" class="image" style="width:100%"></button></div>
+      <p>Sell</p>
+    </div>
+  </div>
+  </td>
+  <td>
+      <div class="container">
+      <div class="imagehere"><button><img src="images/img/community copy.png" alt="Buy" class="image" style="width:100%"></button></div>
+      <p>Community</p>
+      </div>
+    </div>
+    </td>
+</table> 
+</div>
+<div class="footer">
+  <button ><a href="/"><img src="images/img/home.png" alt="Home" height="20px" width="20px"></button>
+  <button><a href="#"><img src="images/img/book.png" alt="About Us" height="20px" width="20px"></button>
+  <button><a href="#"><img src="images/img/contact.png" alt="Contact Us" height="20px" width="20px"></button>
+    <button><a href="#"><img src="images/img/user.png" alt="Login" height="20px" width="20px"></button>
 </div>
 
+<script src="/javascripts/wow.min.js"></script>
+              <script>
+              new WOW().init();
+              </script>
 
+<script src="/javascripts/sccript.js"></script>
 </body>
 </html>

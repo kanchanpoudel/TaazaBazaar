@@ -1,0 +1,166 @@
+
+body, html {
+  height: 100%;
+  margin: 0;
+  /* font-family: 'Prata', serif;  */
+  background: url("../images/veggie.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* @import url('https://fonts.googleapis.com/css?family=Prata&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+.bg {
+  /* background-image: url("/images/vegie.jpg") no-repeat center center fixed; */
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
+}
+/* .topnav{
+  position: absolute;
+  overflow: hidden;
+  top:5%;
+  right: 0%;
+  /*background-color: #333;*/
+/* }
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 40px;
+  text-decoration: none;
+  font-size: 27px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+/* .topnav a.active { */
+  /* background-color: #4CAF50; */
+  /* color: white;
+} */ 
+.centered {
+  position: absolute;
+  top: 7%;
+  left: 41%;
+}
+.centered h1{
+  font-family:  'Courgette', cursive;
+  font-size: 91px;
+  text-align: center;
+  padding-left: 67px;
+  padding-bottom: 38px;
+  color: #45ff218b;
+}
+.centered p:first-child{
+  font-family:  'Courgette', cursive;
+  /*font-weight: bold;*/
+  color:#a1f5998b;
+  font-size: 35px;
+  padding-left: 51px;
+  padding-left: 40px;
+  padding-bottom: 15px;
+}
+.centered p{
+  font-family:  'Courgette', cursive;
+  /*font-weight: bold;*/
+  color:#a1f5998b;
+  font-size: 35px;
+  padding-left: 51px;
+  padding-left: 158px;
+}
+.above{
+  position: absolute;
+  top: 50%;
+  left: 38%; 
+  /*overflow: hidden;*/
+  width: 60%;
+}
+.above table td{
+  width:20%;
+  padding-left: 5px;
+}
+.container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.container .imagehere button{
+  border: #69626A; 
+}
+.container .imagehere button img{
+  background-color:#69626A;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  /* transition: .5s ease;
+  backface-visibility: hidden; */
+}
+.container p{
+  color:#a1f5998b;
+  font-family:  'Courgette', cursive;
+  padding-left: 68px;
+  font-size:25px;
+}
+.container p:last-child{
+  color:#a1f5998b;
+  font-family:  'Courgette', cursive;
+  padding-left: 28px;
+  font-size:25px;
+}
+/* 
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+} */
+
+ .container:hover .imagehere {
+  opacity: 0.5;
+}
+.container:hover .middle {
+  opacity: 1;
+} 
+
+.text {
+  background-color: #b48484;
+  display: block;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  text-align: center;
+} 
+.text button{
+  background-color: #b48484;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   /* background-color: black; */
+   color: white;
+   text-align: center;
+}
+.footer button{
+  padding-right:20px;
+}

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Prata&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/stylesheet/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <style>
   .bg {
     background-image: url("/images/img/background.jpg");
@@ -40,22 +40,11 @@
     filter: blur(8px);
     -webkit-filter: blur(8px);
   }
-  .container{
-      position: absolute;
-      top:14%;
-      left:44%;
-      width: 415px;
-      height: 438px;
-      background: #3e4c1bff;
-      opacity: 0.8;
-      box-shadow: 5px 10px #888888;
-  }
   .topnav {
     position: absolute;
     top:5%;
     right:0%;
   overflow: hidden;
-  color:#AB640D;
   /*background-color: #333;*/
 }
 .topnav a {
@@ -74,29 +63,38 @@
   background-color: #4CAF50;
   color: white;
 }
-.formpart{
-    margin: auto;
-    width: 80%;
-    padding:0%;
-     color:  #0DF608;
-    clear: both;
-    font-size: 24px;
-}
-.formpart h1{
+  .container{
+      position: absolute;
+      top:20%;
+      left:32%;
+      width: 662px;
+      height: 450px;
+      background: #3e4c1bff;
+      /* opacity: 0.5; */
+      box-shadow: 5px 10px #888888;
+  }
+.container h1{
     text-align: center;
-    font-size: 48px;
-    padding-bottom: 10%;
 }
-input{
+.inner{
+    position: absolute;
+    left:18%;
+    top:6%;
+    width: 60%;
+    color:  #45ff218b;
+    font-size: 30px;
+}
+
+button image{
     width: 100%;
-    /* height: 20%; */
-    clear: both;
+    height: 100%;
 }
-.noclear input{
-    width: 5%;
-    clear: none;
-}
-button{
+button:hover{
+    /* color:  #45ff218b; */
+    background: #3e4c1bff;
+      opacity: 0.7;
+      color: whitesmoke;
+    /* color:  #45ff218b; */
     font-family:  'Courgette', cursive;
 }
 }
@@ -112,30 +110,20 @@ button{
         <a  href="/">Home</a>
       </div>
  <div class="container">
-     <div class="formpart">
-        <h1>Login Details do not match!</h1>
-        <form action="/authenticate" method="post" >
-                        User Name:
-                        <input type="text" name="name"><br>
-                        Phone Number: 
-                        <input type="text" name="phone_no"><br>
-                        Password: <input type="password" name="password"  id="myInput"><br>
-                        <div class="noclear">
-                        <input type="checkbox" onclick="myFunction()">Show Password<br>
-                    </div>
-           <br>
-            <button type = "submit">Submit</button>
-               </form>
-               
-        </div>
-        </div>
-      </body>
-      <script type="text/javascript">function myFunction() {
-      var x = document.getElementById("myInput");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }</script>
+     <h1>Our Products</h1>
+     <div class="inner">
+     <table>
+         <tr>
+             <td style="padding:20px"><a href=" /buylist"><button><img src="/images/img/vegetables.png" height="150px" width="160px"></button></td>
+             <td style="padding:20px"><a href=" /buylist"><button><img src="/images/img/fruits.jpg"height="150px" width="160px"></button></td>
+         </tr>
+         <tr>
+                <td style="padding:20px"><a href=" /buylist"><button><img src="/images/img/poultry.jpg" height="150px" width="160px"></button></td>
+                <td style="padding:20px"><a href=" /buylist"><button><img src="/images/img/seeds.png" height="150px" width="160px"></button></td>
+        </tr>
+     </table>
+    </div>
+        
+</div>
+</body>
 </html>

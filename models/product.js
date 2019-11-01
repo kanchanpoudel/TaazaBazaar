@@ -1,5 +1,6 @@
 var mongoose = require ('mongoose');
 const ProductSchema = mongoose.Schema({
+	Seller_Id:String,
 	Type:String,
 	Name:String, 
 Seller:String,

@@ -6,7 +6,7 @@ location:String,
 products: Array,
 description:String,
 reviews: Array,
-nowSellig:Array
+nowSelling:Array
 
 })
 module.exports = mongoose.model('Profiles', ProfileSchema)

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sellers= require('../models/seller')
-var product= require('../models/product')
+var products= require('../models/product')
 
 router.get('/seller', function(req, res, next) {
   //res.render('movies', data);
@@ -23,7 +23,30 @@ router.get('/register', function(req, res, next)
 {
 res.render('register');
 
+
 })
+
+
+router.get('/buy', function(req, res, next)
+{
+res.render('buy');
+
+
+})
+router.get('/buylist', function(req, res, next)
+{
+products.find().exec((err, products) =>
+  {
+    console.log('products...', products);
+    res.render('buylist', {products})
+  })
+
+})
+
+
+
+
+
 router.get('/edit', function(req, res, next)
 {
 res.render('edit');
@@ -36,15 +59,6 @@ res.render('login');
 })
 
 
-router.get('/seller/:_id',  function(req,res, next )    
-  {
-    
-      sellers.findOne({_id: req.params._id}, function(err, seller)
-      {
-
-        res.render('edit', {seller}); })
-    
-  })
 
 
 
@@ -54,7 +68,7 @@ router.get('/add/:_id',  function(req,res, next )
       sellers.findOne({_id: req.params._id}, function(err, seller)
       {
 
-        res.render('addProducts', {seller}); })
+        res.render('edit', {seller}); })
     
   })
 
@@ -90,18 +104,51 @@ catch(err)
 	}
 })})
 
+router.post('/Add', async function(req, res, next){
+  var data = {Name: req.body.name ,Type: req.body.type, Description: req.body.description, Price:req.body.price , Seller:req.body.seller,Seller_Id:req.body._id }
+var product = new products(data)
+try
+{var promise =  product.save();
+  await promise;
+  
+ sellers.findOneAndUpdate({_id: req.body._id}, {$push: {nowSelling: data}}, function(err, seller)
+      {
+      
+        products.find().exec((err, products) =>
+  {
+  
+    res.render('profile', {seller})
+  })
+        
+  
+  })
+}
+catch(err)
+{
+  console.log(err);
+}
+})
+
 
 
 router.post('/updateSeller',  function(req,res, next )
   { console.log(req.body);
       sellers.findOneAndUpdate({_id: req.body._id}, {$set: req.body}, function(err, seller)
       {
+        res.render('buylist', {seller})
+        
+  
+  })
+    }) 
+router.post('/add',  function(req,res, next )
+  { console.log(req.body);
+      sellers.findOne({_id: req.body._id}, function(err, seller)
+      {
         res.render('profile', {seller})
         
     
   })
     })
-
 
 
 

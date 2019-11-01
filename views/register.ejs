@@ -1,63 +1,162 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Register</title> 
-    <link rel='stylesheet' href='/stylesheets/style.css'>
-  </head>
-  <body>
-    <h1>Registere here!</h1>
-    <form action="/Signup" method="post" >
-        <table>
-            <tr>
-                <td>
-                    User Name:<input type="text" name="name">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Phone Number: <input type="text" name="phone_no">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Password: <input type="password"  name="password"  id="myInput">
-                    <input type="checkbox" onclick="myFunction()">Show Password
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Location: <input type="text" name="location">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Description:<input type="text" name="description" >
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Products:<input type="checkbox" name="vegetables" value="vegetables">Vegetables
-                    <input type="checkbox" name="fruits" value="fruits">Fruits
-                    <input type="checkbox" name="poultry" value="poultry">Polutry
-                    <input type="checkbox" name="SeedsandSaplings" value="SeedsandSaplings"> Seeds and 
-                    Saplings
-
-                </td>
-            </tr>
-            
-        </table>
-       
-        <button>Sign Up</button>
-           </form>
-           <button><a href= "/login">Have an Account</button>
-    
-  </body>
-  <script type="text/javascript">function myFunction() {
-  var x = document.getElementById("myInput");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/mainbody.css">
+  <link href="https://fonts.googleapis.com/css?family=Prata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+  .bg {
+    background-image: url("images/img/background.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
   }
-}</script>
-</html>
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family:  'Courgette', cursive;
+    color:  #45ff218b;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* @import url('https://fonts.googleapis.com/css?family=Prata&display=swap'); */
+  /* @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap'); */
+  .bg {
+    /* background-image: url("/images/vegie.jpg") no-repeat center center fixed; */
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  }
+  .topnav {
+    position: absolute;
+    top:5%;
+    right:0%;
+  overflow: hidden;
+  color:#AB640D;
+  /*background-color: #333;*/
+}
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+  .container{
+      position: absolute;
+      top:14%;
+      left:44%;
+      width: 415px;
+      height: 450px;
+      background: #3e4c1bff;
+      opacity: 0.8;
+      box-shadow: 5px 10px #888888;
+  }
+.formpart{
+    margin: auto;
+    width: 80%;
+    padding:0%;
+    color:  #0DF608;
+    clear: both;
+    font-size: 16px;
+}
+.formpart h1{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 5%;
+}
+input{
+    width: 100%;
+
+    clear: both;
+}
+.noclear input{
+    width: 5%;
+    clear: none;
+}
+button{
+    /* background: #82f56a8a;  */
+    background: #3e4c1bff;
+      opacity: 0.9;
+      color: whitesmoke;
+    /* color:  #45ff218b; */
+    font-family:  'Courgette', cursive;
+}
+button a{
+    /* color:  #45ff218b; */
+    color: whitesmoke;
+    text-decoration: none;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="topnav">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a  href="/">Home</a>
+      </div>
+ <div class="container">
+     <div class="formpart">
+            <h1>Register here!</h1>
+            <form action="/Signup" method="post" >
+                            User Name:<input type="text" name="name">
+                        
+                    
+                            Phone Number: <input type="text" name="phone_no">
+                        
+                            Password: <input type="password"  name="password"  id="myInput">
+                            <div class="noclear"><input type="checkbox" onclick="myFunction()">Show Password<br></div>
+            
+                            Location: <input type="text" name="location">
+                            Description:<input type="text" name="description" >
+                            Products:
+                            <div class="noclear">
+                            <input type="checkbox" name="vegetables" value="vegetables">Vegetables
+                            <input type="checkbox" name="fruits" value="fruits">Fruits
+                            <input type="checkbox" name="poultry" value="poultry">Polutry
+                            <input type="checkbox" name="SeedsandSaplings" value="SeedsandSaplings"> Seeds and 
+                            Saplings
+                        </div>
+                        <br>
+               
+                    <button>Sign Up</button>
+                   </form>
+                   <br>
+                   <button><a href= "/login">Already Have an Account</button>
+            
+          </body>
+          <script type="text/javascript">function myFunction() {
+          var x = document.getElementById("myInput");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }</script>
+        </html>

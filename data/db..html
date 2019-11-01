@@ -1,10 +1,31 @@
 seller
 [{
-	name:"Meshuka"
-	location: "Kathmandu"
-	products: "Vegetables" 
-	review: "very good"
-	description: "excellent"
+	name:"Meshuka",
+	location: "Kathmandu",
+	products: {"Vegetables:true", "Fruits:true", "Seeds:false", "Poultry:false"},
+	reviews: ["very good"],
+	description: "HI I'am Meshuka"
+
+
+}
+{
+	name:"Meela",
+location: "Bhaktapur",
+products: {"Vegetables:true", "Fruits:false", "Seeds:true", "Poultry:true"},
+review: ["she is sweet"],
+description:"Hi I'am Meela"
+
+
+
+}
+
+{
+
+name:"Kanchan",
+location: "Nepalgunj",
+products: {"Vegetables:false", "Fruits:false", "Seeds:true", "Poultry:true"},
+review: ["ok"],
+description:"okokok"
 
 }
 
@@ -16,8 +37,26 @@ fruits
 {
 name:"Banana"
 price:"100"
+seller:"Meshuka"
+
+
+},
+{
+name:"Strwaberry"
+price:"100"
+seller:"Meshuka"
+
+
+},
+{
+name:"Bpineapple"
+price:"100"
+seller:"Meshuka"
+
 
 }
+
+
 
 ]
 
@@ -26,14 +65,30 @@ price:"100"
 vegetables
 [
 {
-name:"Cabbage"
-price:"200"
+name:"Cabbage",
+price:"200",
+seller:"Meshuka"
+
+},
+{
+name:"Cauliflower",
+price:"100",
+seller:"Meela"
 
 }
-
-
-
 ]
+poultry
+[
+
+{
+	name:"local kukhura"
+	price:"10 rs kg"
+	seller:"Kanchan"
+}
+]
+
+
+
 
 
 

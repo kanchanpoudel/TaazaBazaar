@@ -6,10 +6,12 @@
   </head>
   <body>
    
-  <form method ="post">
+  <form method ="post" action="/Add">
         <h1>Add Product</h1><br>
+        <input type="hidden"  name="_id" value="<%=seller._id%>" >
+        <input type="hidden"  name="seller" value="<%=seller.name%>" >
         Name:<input type="text" name="name" placeholder=" Product name">
-        <select name = "Now Seling">
+        <select name = "type">
                 <option value= "Fruit">Fruit</option>
                 <option value= "Vegetable">Vegetable</option>
                 <option value= "Poultry">Poultry</option>
@@ -17,7 +19,7 @@
                </select>
            </br>
 
-        Description: <input type="text" name="Selling" placeholder=" Product Description">
+        Description: <input type="text" name="description" placeholder=" Product Description">
         </br>
         Price:<input type ="text" name="price" placeholder="Price ">
 

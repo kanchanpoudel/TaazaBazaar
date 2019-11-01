@@ -1,38 +1,177 @@
+<!DOCTYPE html>
 <html>
 <head>
-<title>User Profile</title>
-<link rel="stylesheets" type="text/css" href="all.css">
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/stylesheets/animate.css">
+  <link rel="stylesheet" href="/stylesheets/mainbody.css">
+  <link href="https://fonts.googleapis.com/css?family=Prata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
+  <style>
+  .bg {
+    background-image: url("images/img/background.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family:  'Courgette', cursive;
+    color:  #45ff218b;
+  }
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* @import url('https://fonts.googleapis.com/css?family=Prata&display=swap'); */
+  /* @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap'); */
+  .bg {
+    /* background-image: url("/images/vegie.jpg") no-repeat center center fixed; */
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  }
+  .topnav {
+    position: absolute;
+    top:5%;
+    right:0%;
+  overflow: hidden;
+  color:#AB640D;
+  /*background-color: #333;*/
+}
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 30px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+  .container{
+      position: absolute;
+      top:14%;
+      left:28%;
+      width: 800px;
+      height: 450px;
+      background: #3e4c1bff;
+      opacity: 0.9;
+      box-shadow: 5px 10px #888888;
+  }
+.formpart{
+    margin: auto;
+    width: 90%;
+     color:  #0DF608;
+    clear: both;
+    font-size: 16px;
+}
+.left{
+    float: left;
+    padding-left: 3px;
+}
+.left h1{
+    text-align: center;
+    font-size: 30px;
+    padding-top:10%;
+    padding-bottom: 5%;
+}
+.right{
+    float: right;
+}
+.right h1{
+    text-align: center;
+    font-size: 30px;
+    padding-top:13%;
+    padding-bottom: 5%;
+}
+input{
+    width: 100%;
+    clear: both;
+}
+.noclear input{
+    width: 5%;
+    clear: none;
+}
+button{
+    /* background: #82f56a8a;  */
+    background: #3e4c1bff;
+      opacity: 0.9;
+      color: whitesmoke;
+    /* color:  #45ff218b; */
+    font-family:  'Courgette', cursive;
+}
+button a{
+    /* color:  #45ff218b; */
+    color: whitesmoke;
+    text-decoration: none;
+}
+}
+</style>
+
 <body>
-</br>
-<h1>
- <%=seller.name%>
-</h1>
-<button><a href="/seller/<%= seller._id %>">Edit Profile</a></button>
 
-<p><%=seller.phone_no%></p>
-<p><%=seller.location%></p>
+<div class="bg"></div>
+<div class="topnav">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a  href="/">Home</a>
+      </div>
+ <div class="container">
+     <div class="formpart">
+        
+            <br>
+            <h1>
+             <%=seller.name%>
+            </h1>
+            
+             Phone no:<%=seller.phone_no%>
+             <br>
+            Location:<%=seller.location%>
+            <br>
+            Description:<%=seller.description%>
+            <br>
+            <br>
+            <br>
+            
+            
+            <h1>Sells</h1>
+            <ul id= "unorderdlist" class= "seller" >
+              <% seller.products.forEach(function(seller){ %> 
+              <li><div><%=seller%></div></li>
+                
+             <% }) %>
+            </ul>
+            <br>
+            <h1>Now Selling</h1>
 
-<h1>Sells</h1>
-<ul id= "unorderdlist" class= "seller" >
-  <% seller.products.forEach(function(seller){ %> 
-  <li><div><%=seller%></div></li>
-    
- <% }) %>
-</ul>
-<br>
-<h1>Now Selling</h1>
-<ul>
-	</ul>
 
-<button><a href="/add/<%= seller._id %>">Add Product</a></button>
-
-
-
-<script>
-
-
-</script>
-</body>
-
-
+            <% seller.nowSelling.forEach(function(now){ %> 
+              <div><li><%=now.Name%>   <%=now.Price%></li></div>
+                
+             <% }) %>
+            <br>
+            <button><a href="/add/<%= seller._id %>">Update</a></button>
+           
+          </div>
+        </div>
+      </body>
+     </html>
