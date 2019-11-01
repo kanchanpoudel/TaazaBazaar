@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost/taazabazaar')
+mongoose.connect('mongodb://localhost/taazabazaar', { useNewUrlParser: true })
 
 
 var app = express();
