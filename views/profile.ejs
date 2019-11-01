@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
 </head>
-<<<<<<< HEAD
+
   <style>
   .bg {
     background-image: url("images/img/background.jpg");
@@ -126,40 +126,7 @@ button a{
 }
 }
 </style>
-=======
-<body>
-</br>
-<h1>
- <%=seller.name%>
-</h1>
-<button><a href="/seller/<%= seller._id %>">Edit Profile</a></button>
 
-<p><%=seller.phone_no%></p>
-<p><%=seller.location%></p>
-
-<h1>Sells</h1>
-<ul id= "unorderdlist" class= "seller" >
-  <% seller.products.forEach(function(seller){ %> 
-  <li><div><%=seller%></div></li>
-    
- <% }) %>
-</ul>
-<br>
-<h1>Now Selling</h1>
-<ul = "uborderedlist" class="selling">
-	<%seller.NowSelling.forEach(function(selling){%>
-<li>Product: <%=selling.name%>
-<br>
-</ul>
-
-<button><a href="/add/<%= seller._id %>">Add Product</a></button>
-
-
-
-<script>
->>>>>>> 7534c288b411cd603a7c5f375d7d1243130368e8
-
-<body>
 
 <div class="bg"></div>
 <div class="topnav">
