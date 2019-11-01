@@ -190,10 +190,4 @@ router.post('/authenticate', async function(req, res, next){
 
 
 
-
-
-
-
-
-
 module.exports = router;
