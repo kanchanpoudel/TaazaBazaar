@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var path = __dirname + '/views/'
 var sellers= require('../models/seller')
 var products= require('../models/product')
 
