@@ -27,13 +27,6 @@ res.render('register');
 
 })
 
-
-router.get('/buy', function(req, res, next)
-{
-res.render('buy');
-
-
-})
 router.get('/buylist', function(req, res, next)
 {
 products.find().exec((err, products) =>

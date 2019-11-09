@@ -9980,6 +9980,32 @@ textarea.form-control {
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round; }
 
+.formpart{
+    margin: auto;
+    width: 40%;
+    padding:0%;
+    color:  black;
+    clear: both;
+    font-size: 18px;
+}
+.formpart h1{
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 5%;
+}
+input{
+    width: 100%;
+    /* height: 20%; */
+    clear: both;
+}
+.noclear input{
+    width: 5%;
+    clear: none;
+}
+.formpart button a
+{
+  text-decoration: none;
+}
 @-webkit-keyframes loader-rotate {
   100% {
     -webkit-transform: rotate(360deg);

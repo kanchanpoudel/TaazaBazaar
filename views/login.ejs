@@ -1,118 +1,95 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="/stylesheet/animate.css">
-  <link rel="stylesheet" href="/stylesheet/mainbody.css">
-  <link href="https://fonts.googleapis.com/css?family=Prata&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/stylesheet/style.css">
-  <style>
-  .bg {
-    background-image: url("/images/img/background.jpg");
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-  }
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family:  'Courgette', cursive;
-    color:  #45ff218b;
-  }
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  /* @import url('https://fonts.googleapis.com/css?family=Prata&display=swap'); */
-  /* @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap'); */
-  .bg {
-    /* background-image: url("/images/vegie.jpg") no-repeat center center fixed; */
-    height: 100%; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
-  }
-  .container{
-      position: absolute;
-      top:14%;
-      left:44%;
-      width: 415px;
-      height: 438px;
-      background: #3e4c1bff;
-      opacity: 0.9;
-      box-shadow: 5px 10px #888888;
-  }
-  .topnav {
-    position: absolute;
-    top:5%;
-    right:0%;
-  overflow: hidden;
-  color:#AB640D;
-  /*background-color: #333;*/
-}
-.topnav a {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 30px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-.formpart{
-    margin: auto;
-    width: 80%;
-    padding:0%;
-     color:  #0DF608;
-    clear: both;
-    font-size: 24px;
-}
-.formpart h1{
-    text-align: center;
-    font-size: 48px;
-    padding-bottom: 10%;
-}
-input{
-    width: 100%;
-    /* height: 20%; */
-    clear: both;
-}
-.noclear input{
-    width: 5%;
-    clear: none;
-}
-button{
-    font-family:  'Courgette', cursive;
-}
-}
-</style>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <title>TazaaBazaar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- fonts: -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+  <!-- external css/for animation too -->
+    <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
 
-<div class="bg"></div>
-<div class="topnav">
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <a  href="/">Home</a>
+    <link rel="stylesheet" href="/css/aos.css">
+
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="/css/flaticon.css">
+    <link rel="stylesheet" href="/css/icomoon.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body class="goto-here">
+    <div class="py-1 bg-primary">
+      <div class="container">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+          <div class="col-lg-12 d-block">
+            <div class="row d-flex">
+              <div class="col-md pr-4 d-flex topper align-items-center">
+                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                <span class="text">+977-9818617684</span>
+              </div>
+              <div class="col-md pr-4 d-flex topper align-items-center">
+                <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                <span class="text">tazaabazaar@gmail.com</span>
+              </div>
+              <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
+                <span class="text">3-5 Business days delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
- <div class="container">
-     <div class="formpart">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <!-- (logo rakhne yaha) -->
+        <a class="navbar-brand" href="index.html">TazaaBazaar</a>             
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item" href="/buylist">Shop</a>
+                <a class="dropdown-item" href="wishlist.html">Wishlist</a>
+                <a class="dropdown-item" href="product-single.html">Single Product</a>
+                <a class="dropdown-item" href="cart.html">Cart</a>
+                <a class="dropdown-item" href="checkout.html">Checkout</a>
+              </div>
+      </li>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sell</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+            <a class="dropdown-item" href="/login">Login</a>
+            <a class="dropdown-item" href="/register">Register</a>
+          </div>
+          </li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- END nav -->
+ <div class="formpart">
         <h1>Login</h1>
         <form action="/authenticate" method="post" >
                         User Name:
@@ -129,7 +106,6 @@ button{
                
         </div>
         </div>
-      </body>
       <script type="text/javascript">function myFunction() {
       var x = document.getElementById("myInput");
       if (x.type === "password") {
@@ -138,4 +114,42 @@ button{
         x.type = "password";
       }
     }</script>
+     <footer class="ftco-footer ftco-section">
+      
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p>
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Colorlib</a>
+      
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
 </html>
