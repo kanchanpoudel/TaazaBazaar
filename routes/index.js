@@ -18,7 +18,6 @@ router.get('/seller', function(req, res, next) {
 router.get('/', function(req, res, next)
 {
 res.render('first');
-
 })
 router.get('/register', function(req, res, next)
 {
@@ -98,7 +97,7 @@ catch(err)
 	}
 })})
 
-router.post('/Add', async function(req, res, next){
+router.put('/Add', async function(req, res, next){
   var data = {Name: req.body.name ,Type: req.body.type, Description: req.body.description, Price:req.body.price , Seller:req.body.seller,Seller_Id:req.body._id }
 var product = new products(data)
 try
