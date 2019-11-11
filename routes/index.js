@@ -3,6 +3,7 @@ var router = express.Router();
 var path = __dirname + '/views/'
 var sellers= require('../models/seller')
 var products= require('../models/product')
+var multer= require('multer')
 
 router.get('/seller', function(req, res, next) {
   //res.render('movies', data);
@@ -140,8 +141,29 @@ catch(err)
 	}
 })})
 
-router.post('/Add', async function(req, res, next){
-  var data = {Name: req.body.name ,Type: req.body.type, Description: req.body.description, Price:req.body.price , Seller:req.body.seller,Seller_Id:req.body._id }
+var storage = multer.diskStorage({
+  destination: "./public/uploads/",
+  filename: function (req, file, cb) {
+    cb(null, req.body.name+ '-' + Date.now() )
+  }
+})
+
+var Upload = multer({ storage: storage }).single('file');
+
+
+
+
+
+
+
+
+
+
+router.post('/Add', Upload, async function(req, res, next){
+
+
+
+  var data = {Name: req.body.name ,Type: req.body.type, Description: req.body.description, Price:req.body.price , Seller:req.body.seller,Seller_Id:req.body._id, Image:"/uploads/"+req.file.filename }
 var product = new products(data)
 try
 {var promise =  product.save();
@@ -164,6 +186,7 @@ catch(err)
   console.log(err);
 }
 })
+
 
 
 
