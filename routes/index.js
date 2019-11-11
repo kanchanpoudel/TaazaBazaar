@@ -36,8 +36,42 @@ products.find().exec((err, products) =>
 
 })
 
+router.get('/fruitsList', function(req, res, next)
+{
+products.find().exec((err, products) =>
+  {
+    console.log('products...', products);
+    res.render('fruitsList', {products})
+  })
 
+})
+router.get('/vegetablesList', function(req, res, next)
+{
+products.find().exec((err, products) =>
+  {
+    console.log('products...', products);
+    res.render('vegetablesList', {products})
+  })
 
+})
+router.get('/seedsList', function(req, res, next)
+{
+products.find().exec((err, products) =>
+  {
+    console.log('products...', products);
+    res.render('seedsList', {products})
+  })
+
+})
+router.get('/poultryList', function(req, res, next)
+{
+products.find().exec((err, products) =>
+  {
+    console.log('products...', products);
+    res.render('poultryList', {products})
+  })
+
+})
 
 
 router.get('/edit', function(req, res, next)
@@ -62,6 +96,15 @@ router.get('/add/:_id',  function(req,res, next )
       {
 
         res.render('edit', {seller}); })
+    
+  })
+router.get('/singleproduct/:_id',  function(req,res, next )    
+  {
+    
+      products.findOne({_id: req.params._id}, function(err, product)
+      {
+
+        res.render('singleProduct', {product}); })
     
   })
 
@@ -97,7 +140,7 @@ catch(err)
 	}
 })})
 
-router.put('/Add', async function(req, res, next){
+router.post('/Add', async function(req, res, next){
   var data = {Name: req.body.name ,Type: req.body.type, Description: req.body.description, Price:req.body.price , Seller:req.body.seller,Seller_Id:req.body._id }
 var product = new products(data)
 try

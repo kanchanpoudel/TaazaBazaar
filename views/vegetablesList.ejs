@@ -87,77 +87,57 @@
         </div>
       </div>
     </nav>
-<section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 mb-5 ftco-animate">
-            <a href="images/product-1.jpg" class="image-popup"><img src="/images/avatar.png" class="img-fluid" alt="Colorlib Template"></a>
-          </div>
-          <div class="col-lg-6 product-details pl-md-5 ftco-animate">
-            <h3><%=seller.name%></h3>
-            <div class="rating d-flex">
-              <p class="text-left mr-4">
-                <a href="#" class="mr-2">5.0</a>
-                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                <a href="#"><span class="ion-ios-star-outline"></span></a>
-                <a href="#"><span class="ion-ios-star-outline"></span></a>
-              </p>
-              <p class="text-left mr-4">
-                <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
-              </p>
-              <p class="text-left">
-                <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
-              </p>
-            </div>
-            <p class="price"><span style="font-size: 14px; color: black"><%=seller.phone_no%></span><br>
-              <span style="font-size: 14px; color: black"><%=seller.location%></span></p><br>
-            <p><h3>Description:</h3>
-              <%=seller.description%>
-            </p>
-            <h4>Categories</h4>
-            <ul id= "unorderdlist" class= "seller" >
-              <% seller.products.forEach(function(seller){ %> 
-              <li><div><%=seller%></div></li> 
-             <% }) %>
-            </ul>
-            <br>
-            <h4>Now Selling</h4>
-            <% seller.nowSelling.forEach(function(now){ %> 
-              <div><li><%=now.Name%>   <%=now.Price%></li></div> 
-             <% }) %>
-            <br>
+    <!-- END nav -->
 
-            <button><a href="/add/<%= seller._id %>" style="text-decoration: none; color: black">Update</a></button>
+
+    
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+            <h1 class="mb-0 bread">Products</h1>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="ftco-section">
+     
       <div class="container">
-        <div class="row justify-content-center mb-3 pb-3">
+        <div class="row justify-content-center">
+          <div class="col-md-10 mb-5 text-center">
+            <ul class="product-category">
+              <li><a href="/buylist" >All</a></li>
+              <li><a href="/vegetablesList" class="active">Vegetables</a></li>
+              <li><a href="/fruitsList" >Fruits</a></li>
+              <li><a href="/poultryList">Poultry</a></li>
+              <li><a href="/seedsList">Seeds/Saplings</a></li>
+            </ul>
+          </div>
+        </div>
+                 <div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
             <span class="subheading">Vegetables</span>
             <h2 class="mb-4">Available Products</h2>
             <!-- <p>Freshly grown organic food. Because everybody cares and now everybody also gets to share.</p> -->
           </div>
-        </div>      
-      </div>
-      <div class="container">
+        </div>
+
         <div class="row">
-           <% seller.nowSelling.forEach(function(now){ %>
+          
+           <% products.forEach(function(product){ %>
+          <%if (product.Type=='Vegetable'){ %>
           <div class="col-md-6 col-lg-3 ftco-animate">
             <div class="product">
               <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
                 <div class="overlay"></div>
               </a>
               <div class="text py-3 pb-4 px-3 text-center">
-                <h3><a href="#"><%=now.Name%></a></h3>
+                <h3><a href="#"><%=product.Name%></a></h3>
                 <div class="d-flex">
                   <div class="pricing">
-                    <p class="price"><span class="price-sale"><%=now.Price%></span></p>
+                    <p class="price"><span class="price-sale"><%=product.Price%></span></p>
                   </div>
                 </div>
                 <div class="bottom-area d-flex px-3">
@@ -179,19 +159,39 @@
               </div>
             </div>
           </div>
+          <%}%>
            <% }) %>
            
         </div>
       </div>
     </section>
-    <footer class="ftco-footer ftco-section">
-      
-        <div class="row">
+    
+    <section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
+            <span class="subheading">Best Price For You</span>
+            <h2 class="mb-4">Deal of the day</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <h3><a href="#">Spinach</a></h3>
+            <span class="price">$10 <a href="#">now $5 only</a></span>
+            <div id="timer" class="d-flex mt-5">
+              <div class="time" id="days"></div>
+              <div class="time pl-3" id="hours"></div>
+              <div class="time pl-3" id="minutes"></div>
+              <div class="time pl-3" id="seconds"></div>
+            </div>
+          </div>
+        </div>      
+      </div>
+    </section>
+ <footer class="ftco-footer ftco-section">
+         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p>
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Colorlib</a>
-      
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
         </div>
