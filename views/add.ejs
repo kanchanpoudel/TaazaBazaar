@@ -87,49 +87,34 @@
         </div>
       </div>
     </nav>
+    <br>
+
 
     <!-- END nav -->
- <div class="formpart">
-            <form method= "post" action ="/updateSeller" >
-                   
-                <div class="left">
-                                
-    
-  <input type="hidden"  name="_id" value="<%=seller._id%>" >
-     
-        <h1>Edit Your Profile</h1>
-                    User Name: <br><input type="text" name="seller" value="<%=seller.name%>"><br>
-                        
-                    Phone Number: <br> <input type="text" name="phone_no" value="<%=seller.phone_no%>"><br>
-                        
-                    Password: <br> <input type="password" name="password" value="<%=seller.password%>" id ="myInput"><br>
 
-
-                            <div class="noclear"><input type="checkbox" onclick="myFunction()">Show Password<br></div>
-                        
-                    Location: <br> <input type="text" name="location" value="<%=seller.location%>"><br>
-                        
-                    Description: <br><input type="text" name="description" value="<%=seller.description%>"><br>
-                        <div class="noclear">
-                        <label> Products: <br><input type="checkbox" name="vegetables" value="vegetables">Vegetables
-                            <input type="checkbox" name="fruits" value="fruits">Fruits
-                            <input type="checkbox" name="Polutry" value="polutry">Polutry
-                            <input type="checkbox" name="Seeds and Saplings" value="SeedsandSaplings"> Seeds and 
-                            Saplings</label>
-                        </div>
-                        <button type = "submit">Update</button>
-                    </div>
-                    </form>
-                    
+                    <form method="post" action="/Add"   enctype="multipart/form-data"style="margin-left:420px;margin-right:450px;  " >
+                                      <div class="right">     
+                                      <h1>Add Product</h1> 
+                                      <br>  
+                
+                <input type="hidden" name="_id" value="<%=seller._id%>">
+                <input type="hidden" name="seller" value="<%=seller.name%>">
+                Product Name: <br><input type="text" name="name" placeholder=" Product name">  <br>
+                Product Description: <br><input type="text" name="description" placeholder=" Product Description"> </br>
+                Product Price:  <input type ="text" name="price" placeholder="Price "> <br>
+                Product Category:<br> <select name = "type">
+                        <option value= "Fruit">Fruit</option>
+                        <option value= "Vegetable">Vegetable</option>
+                        <option value= "Poultry">Poultry</option>
+                        <option value= "Seed/sapling">Seed/sapling</option>
+                       </select>
+                       <br>
+                       Image<br><input type="file" name="file" > 
+                       <button type = "submit">Add</button>
+                </div>
+            </form>
 </div>
-<script type="text/javascript">function myFunction() {
-          var x = document.getElementById("myInput");
-          if (x.type === "password") {
-            x.type = "text";
-          } else {
-            x.type = "password";
-          }
-        }</script>     <footer class="ftco-footer ftco-section">
+   <footer class="ftco-footer ftco-section">
       
         <div class="row">
           <div class="col-md-12 text-center">

@@ -93,6 +93,7 @@
           <div class="col-lg-6 mb-5 ftco-animate">
             <a href="images/product-1.jpg" class="image-popup"><img src="/images/avatar.png" class="img-fluid" alt="Colorlib Template"></a>
           </div>
+          
           <div class="col-lg-6 product-details pl-md-5 ftco-animate">
             <h3><%=seller.name%></h3>
             <div class="rating d-flex">
@@ -123,13 +124,9 @@
              <% }) %>
             </ul>
             <br>
-            <h4>Now Selling</h4>
-            <% seller.nowSelling.forEach(function(now){ %> 
-              <div><li><%=now.Name%>   <%=now.Price%></li></div> 
-             <% }) %>
-            <br>
+            
 
-            <button><a href="/add/<%= seller._id %>" style="text-decoration: none; color: black">Update</a></button>
+            <button><a href="/edit/<%= seller._id %>" style="text-decoration: none; color: black">Edit</a></button>
           </div>
         </div>
       </div>
@@ -139,8 +136,10 @@
       <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
           <div class="col-md-12 heading-section text-center ftco-animate">
-            <span class="subheading">Vegetables</span>
-            <h2 class="mb-4">Available Products</h2>
+            
+            <h2 class="mb-4">Now selling</h2>
+            
+<button><a href="/add/<%= seller._id %>" style="text-decoration: none; color: black">Add</a></button>
             <!-- <p>Freshly grown organic food. Because everybody cares and now everybody also gets to share.</p> -->
           </div>
         </div>      
@@ -150,7 +149,7 @@
            <% seller.nowSelling.forEach(function(now){ %>
           <div class="col-md-6 col-lg-3 ftco-animate">
             <div class="product">
-              <a href="#" class="img-prod"><img class="img-fluid" src="images/product-1.jpg" alt="Colorlib Template">
+              <a href="#" class="img-prod"><img class="img-fluid" src="<%=now.Image%>" alt="Colorlib Template">
                 <div class="overlay"></div>
               </a>
               <div class="text py-3 pb-4 px-3 text-center">
@@ -185,10 +184,11 @@
       </div>
     </section>
     <footer class="ftco-footer ftco-section">
+           
+
       
         <div class="row">
           <div class="col-md-12 text-center">
-
             <p>
               Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Colorlib</a>
       

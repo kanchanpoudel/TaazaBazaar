@@ -20,6 +20,7 @@ router.get('/', function(req, res, next)
 {
 res.render('first');
 })
+
 router.get('/register', function(req, res, next)
 {
 res.render('register');
@@ -75,11 +76,7 @@ products.find().exec((err, products) =>
 })
 
 
-router.get('/edit', function(req, res, next)
-{
-res.render('edit');
 
-})
 router.get('/login', function(req, res, next)
 {
 res.render('login');
@@ -90,13 +87,24 @@ res.render('login');
 
 
 
-router.get('/add/:_id',  function(req,res, next )    
+router.get('/edit/:_id',  function(req,res, next )    
   {
     
       sellers.findOne({_id: req.params._id}, function(err, seller)
       {
 
         res.render('edit', {seller}); })
+    });
+
+
+
+      router.get('/add/:_id',  function(req,res, next )    
+  {
+    
+      sellers.findOne({_id: req.params._id}, function(err, seller)
+      {
+
+        res.render('add', {seller}); })
     
   })
 router.get('/singleproduct/:_id',  function(req,res, next )    
