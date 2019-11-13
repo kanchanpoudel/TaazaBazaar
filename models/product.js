@@ -6,9 +6,9 @@ const ProductSchema = mongoose.Schema({
 Seller:String,
 Price:String,
 Description:String,
-Image:String
-
-
+Image:String,
+Amount:String,
+Avaialibility:Boolean
 
 })
 module.exports = mongoose.model('products', ProductSchema)

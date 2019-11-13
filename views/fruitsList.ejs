@@ -126,7 +126,8 @@
           <%if (product.Type=='Fruit'){ %>
           <div class="col-md-6 col-lg-3 ftco-animate">
             <div class="product">
-              <a href="#" class="img-prod"><img class="img-fluid" src="<%=product.Image%>" alt="Colorlib Template">
+               <input type="hidden" name="_id" value="<%=product._id%>">
+              <a href="/each/<%= product._id %>"class="img-prod"><img class="img-fluid" src="<%=product.Image%>" alt="Colorlib Template">
                 <div class="overlay"></div>
               </a>
               <div class="text py-3 pb-4 px-3 text-center">
@@ -138,18 +139,10 @@
                 </div>
                 <div class="bottom-area d-flex px-3">
                   <div class="m-auto d-flex">
-                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                    <span><i class="ion-ios-menu"></i></span>
-                    <!-- (redirect to single vegetable page for details about this vegetable and sellers) -->
-                    </a>
+                   
                     <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
                       <span><i class="ion-ios-cart"></i></span>
                   </a>
-                  <!-- (add to cart) -->
-                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                      <span><i class="ion-ios-heart"></i></span>
-                  </a>
-                  <!-- (adds to wishlist) -->
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@ var router = express.Router();
 var path = __dirname + '/views/'
 var sellers= require('../models/seller')
 var products= require('../models/product')
+var orders= require('../models/order')
 var multer= require('multer')
 
 router.get('/seller', function(req, res, next) {
@@ -21,9 +22,17 @@ router.get('/', function(req, res, next)
 res.render('first');
 })
 
+
 router.get('/register', function(req, res, next)
 {
 res.render('register');
+
+
+})
+
+router.get('/s', function(req, res, next)
+{
+res.render('singleProduct');
 
 
 })
@@ -86,6 +95,56 @@ res.render('login');
 
 
 
+router.post('/order', async function(req, res, next){
+ 
+
+  products.findOne({_id: req.body._id},async function(err, product)
+    {
+   
+  
+var order = new orders({Seller_id:product.Seller_Id, 
+Product_id:req.body._id,
+Name:req.body.Name,
+Phone:req.body.Phone_no,
+Amount:req.body.Amount,
+Location:req.body.Location,
+Time:req.body.Time
+
+
+})
+try
+{var promise =  order.save();
+  await promise;
+}
+catch(err)
+{
+  console.log(err);
+}
+
+sellers.findOneAndUpdate({_id: product.Seller_Id}, {$push: {requests: order}}, function(err, seller)
+      {
+      
+        
+  console.log(seller);
+        
+  
+  })
+
+
+}
+)
+
+})
+
+
+
+
+
+
+
+
+
+
 
 router.get('/edit/:_id',  function(req,res, next )    
   {
@@ -107,17 +166,17 @@ router.get('/edit/:_id',  function(req,res, next )
         res.render('add', {seller}); })
     
   })
-router.get('/singleproduct/:_id',  function(req,res, next )    
+
+router.get('/each/:_id',  function(req,res, next )    
   {
     
       products.findOne({_id: req.params._id}, function(err, product)
       {
-
-        res.render('singleProduct', {product}); })
+ console.log(product)
+        res.render('singleProduct', {product} );
     
   })
-
-
+    })
 
 
 router.post('/Signup', async function(req, res, next){
@@ -183,7 +242,7 @@ try
         products.find().exec((err, products) =>
   {
   
-    res.render('profile', {seller})
+    res.render('add', {seller})
   })
         
   
