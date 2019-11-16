@@ -5,9 +5,15 @@ var sellers= require('../models/seller')
 var products= require('../models/product')
 var orders= require('../models/order')
 var multer= require('multer')
+var bcrypt = require('bcryptjs')
+var passport =require('passport')
+
+
+
+
 
 router.get('/seller', function(req, res, next) {
-  //res.render('movies', data);
+
 
   sellerProfiles.find().exec((err, sellerProfiles) =>
   {
@@ -16,10 +22,31 @@ router.get('/seller', function(req, res, next) {
   	
   })
 });
+const auth = (req, res, next) => {
+  if(req.isAuthenticated()){
+    next()
+  }
+  else{
+    console.log("skjnjdsnjdnjsdfjsdfjkdsnfkjds")
+    res.redirect("/")
+  }
+}
 /* GET home page. */
 router.get('/', function(req, res, next)
 {
+  console.log(req.isAuthenticated())
 res.render('first');
+})
+
+
+router.get('/confirm', function(req, res, next)
+{
+res.render('confirm');
+})
+
+router.get('/profile', auth, function(req, res, next)
+{
+res.render('profile', {user});
 })
 
 
@@ -30,12 +57,7 @@ res.render('register');
 
 })
 
-router.get('/s', function(req, res, next)
-{
-res.render('singleProduct');
 
-
-})
 
 router.get('/buylist', function(req, res, next)
 {
@@ -125,7 +147,7 @@ sellers.findOneAndUpdate({_id: product.Seller_Id}, {$push: {requests: order}}, f
       {
       
         
-  console.log(seller);
+  res.render('buylist')
         
   
   })
@@ -137,6 +159,38 @@ sellers.findOneAndUpdate({_id: product.Seller_Id}, {$push: {requests: order}}, f
 })
 
 
+
+router.get('/confirm/:_id',  function(req,res, next )    
+  {
+    
+      orders.findOne({_id: req.params._id}, function(err, order)
+      {
+
+        res.render('confirm', {order}); })
+    });
+
+
+
+router.get('/confirmed/:_id',  function(req,res, next )    
+  {
+    
+      orders.findOneAndDelete({_id: req.params._id}, function(err, order)
+      {
+
+products.findOneAndDelete({_id:order.Product_id}, function(err, order)
+  {
+    console.log("deleted")
+  });
+  sellers.findOneAndUpdate({"_id":order.Seller_id},{$pull:{"requests":{"_id":order._id}}}) 
+
+
+
+  
+    
+
+        
+    });
+    });
 
 
 
@@ -193,13 +247,22 @@ var productArr =[req.body.vegetables, req.body.fruits, req.body.poultry, req.bod
 	password:req.body.password, description:req.body.description, products: productArr
 
 })
+
+
 	
 try
-{var promise =  seller.save();
+
+{
+
+const salt = await bcrypt.genSaltSync();
+ const hash = await  bcrypt.hashSync(req.body.password, salt);
+seller.password = hash;
+
+  var promise =  seller.save();
   await promise;
   console.log('profile saved', seller)
 
-  res.render('profile', {seller});
+  res.redirect('login');
 }
 catch(err)
 {
@@ -275,10 +338,23 @@ router.post('/add',  function(req,res, next )
     
   })
     })
+router.post('/authenticate',
+  passport.authenticate('local',{session: false}),
+  function(req, res) {
+
+console.log("*************************", req.isAuthenticated())
+
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+ seller= req.user||null;
+  
+    res.render('profile',{seller} );
+  });
 
 
 
-router.post('/authenticate', async function(req, res, next){
+
+/*router.post('/authenticate', async function(req, res, next){
 
  sellers.findOne({phone_no: req.body.phone_no}, function(err, seller)
  	{
@@ -312,6 +388,7 @@ router.post('/authenticate', async function(req, res, next){
 }
 
 )
+*/
 
 
 

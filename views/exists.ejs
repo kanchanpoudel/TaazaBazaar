@@ -92,17 +92,27 @@
 <div class="formpart">
         <h1>Phone No. Already in Use!</h1>
         <form action="/Signup" method="post" >
-                        User Name:
-                        <input type="text" name="name"><br>
-                        Phone Number: 
-                        <input type="text" name="phone_no"><br>
-                        Password: <input type="password" name="password"  id="myInput"><br>
-                        <div class="noclear">
-                        <input type="checkbox" onclick="myFunction()">Show Password<br>
-                    </div>
-           <br>
-            <button type = "submit">Submit</button>
-               </form>
+                        User Name:<input type="text" name="name">
+                        
+                    
+                            Phone Number: <input type="text" name="phone_no">
+                        
+                            Password: <input type="password"  name="password"  id="myInput">
+                            <div class="noclear"><input type="checkbox" onclick="myFunction()">Show Password<br></div>
+            
+                            Location: <input type="text" name="location">
+                            Description:<input type="text" name="description" >
+                            Products:
+                            <div class="noclear">
+                            <input type="checkbox" name="vegetables" value="vegetables">Vegetables
+                            <input type="checkbox" name="fruits" value="fruits">Fruits
+                            <input type="checkbox" name="poultry" value="poultry">Polutry
+                            <input type="checkbox" name="SeedsandSaplings" value="SeedsandSaplings"> Seeds and 
+                            Saplings
+                        </div>
+                        <br>
+               
+                    <button type = "submit">Sign Up</button>
                
         </div>
         </div>

@@ -1,7 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <title>TazaaBazaar</title>
+
+<style type="text/css">
+
+    .form-popup {
+  display: none;
+  position:fixed;
+ top: 0px;
+  right: 0px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 5px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- fonts: -->
@@ -29,7 +76,6 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body class="goto-here">
-   
     <div class="py-1 bg-primary">
       <div class="container">
         <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
@@ -88,50 +134,95 @@
         </div>
       </div>
     </nav>
-    <br>
-
-
     <!-- END nav -->
 
-                    <form method="post" action="/Add"   enctype="multipart/form-data"style="margin-left:420px;margin-right:450px;  " >
-                                      <div class="right">     
-                                      <h1>Add Product</h1> 
-                                      <br>  
-                
-                <input type="hidden" name="_id" value="<%=seller._id%>">
-                <input type="hidden" name="seller" value="<%=seller.name%>">
-                Product Name: <br><input type="text" name="name" placeholder=" Product name">  <br>
-                Product Description: <br><input type="text" name="description" placeholder=" Product Description"> </br>
-                Product Price:  <input type ="text" name="price" placeholder="Price "> <br>
-                Product Category:<br> <select name = "type">
-                        <option value= "Fruit">Fruit</option>
-                        <option value= "Vegetable">Vegetable</option>
-                        <option value= "Poultry">Poultry</option>
-                        <option value= "Seed/sapling">Seed/sapling</option>
-                       </select>
-                       <br>
-                       Image<br><input type="file" name="file" > 
-                       <button type = "submit">Add</button>
+
+    <section class="ftco-section">
+      <div class="container">
+     
+       <input type="hidden"  name="_id" value="<%=order._id%>" >
+           <h3><%=order.Name%></h3>
+           
+              Contact:<p class="price"><span><%=order.Phone%></span></p>
+          Location:<p><%=order.Location%>
+            <br>
+            Quantiy:<%=order.Amount%>
+            
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="form-group d-flex">
+                  <div class="select-wrap">
+                    
                 </div>
-            </form>
-</div>
-   <footer class="ftco-footer ftco-section">
-      
+              </div>
+              <div class="w-100"></div>
+              
+              </div>
+              <div class="w-100"></div>
+              
+              </div>
+            </div>
+            <button style="margin-left: 120px"  class="btn btn-black py-3 px-5"  ><a href="/confirmed/<%=order._id%>"> Confirm</a></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    <footer class="ftco-footer ftco-section">
+      <div class="container">
+       
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p>
-              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Colorlib</a>
-      
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
         </div>
       </div>
     </footer>
-    
-  
 
-  <!-- loader -->
+
+
+
+
+
+    
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+  
     
   </body>
 </html>
