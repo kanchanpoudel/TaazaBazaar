@@ -4,30 +4,23 @@ const config = require('../config/database');
 const bcrypt = require ('bcryptjs');
 var passport = require('passport')
 module.exports = function(passport)
-{ passport.serializeUser(function(user, done) {
-		console.log('in serializeer')
-  done(null, user.id);
-});
-passport.deserializeUser(function(user, done) {
-	console.log("in the deserialize")
-    done(null, user);
-});
+{ 
 	
 	passport.use(new LocalStrategy(function(username, password, done)
 	{
 		
 		let query= {phone_no:username};
-		seller.findOne(query, function(err, seller)
+		seller.findOne(query, function(err, user)
 		{
 
 
 			if (err) console.log(err);
-			if(!seller)
+			if(!user)
 			{ 
 				return done (null, false, {message:'no user found'});
 
 			}
-			bcrypt.compare(password.toString(), seller.password.toString(), function(err, isMatch)
+			bcrypt.compare(password.toString(), user.password.toString(), function(err, isMatch)
 			{
 
 
@@ -36,7 +29,7 @@ passport.deserializeUser(function(user, done) {
 				{
 
 
-					return done(null, seller);
+					return done(null, user);
 
 				}
 				else 
@@ -46,7 +39,14 @@ passport.deserializeUser(function(user, done) {
 			})
 		})
 	}))
-
+passport.serializeUser(function(user, done) {
+		console.log('in serializeer')
+  done(null, user.id);
+});
+passport.deserializeUser(function(user, done) {
+	console.log("in the deserialize")
+    done(null, user);
+});
 
 
 }

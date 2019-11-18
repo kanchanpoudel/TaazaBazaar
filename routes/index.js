@@ -12,31 +12,27 @@ var passport =require('passport')
 
 
 
-router.get('/seller', function(req, res, next) {
-
-
-  sellerProfiles.find().exec((err, sellerProfiles) =>
-  {
-  	console.log('seller...', sellerProfiles);
-
-  	
-  })
-});
 const auth = (req, res, next) => {
   if(req.isAuthenticated()){
+    console.log(req.user)
     next()
   }
-  else{
-    console.log("skjnjdsnjdnjsdfjsdfjkdsnfkjds")
-    res.redirect("/")
-  }
+  else
+    res.redirect('/')
+  
 }
 /* GET home page. */
-router.get('/', function(req, res, next)
+router.get('/home',auth, function(req, res, next)
 {
-  console.log(req.isAuthenticated())
+  console.log("home");
 res.render('first');
 })
+router.get('/', function(req, res, next)
+{
+ 
+res.render('first');
+})
+
 
 
 router.get('/confirm', function(req, res, next)
@@ -46,11 +42,11 @@ res.render('confirm');
 
 router.get('/profile', auth, function(req, res, next)
 {
-res.render('profile', {user});
+res.render('profile');
 })
 
 
-router.get('/register', function(req, res, next)
+router.get('/register',  function(req, res, next)
 {
 res.render('register');
 
@@ -59,7 +55,7 @@ res.render('register');
 
 
 
-router.get('/buylist', function(req, res, next)
+router.get('/buylist',  function(req, res, next)
 {
 products.find().exec((err, products) =>
   {
@@ -69,7 +65,7 @@ products.find().exec((err, products) =>
 
 })
 
-router.get('/fruitsList', function(req, res, next)
+router.get('/fruitsList',  function(req, res, next)
 {
 products.find().exec((err, products) =>
   {
@@ -78,7 +74,7 @@ products.find().exec((err, products) =>
   })
 
 })
-router.get('/vegetablesList', function(req, res, next)
+router.get('/vegetablesList',  function(req, res, next)
 {
 products.find().exec((err, products) =>
   {
@@ -87,7 +83,7 @@ products.find().exec((err, products) =>
   })
 
 })
-router.get('/seedsList', function(req, res, next)
+router.get('/seedsList',  function(req, res, next)
 {
 products.find().exec((err, products) =>
   {
@@ -96,7 +92,7 @@ products.find().exec((err, products) =>
   })
 
 })
-router.get('/poultryList', function(req, res, next)
+router.get('/poultryList',  function(req, res, next)
 {
 products.find().exec((err, products) =>
   {
@@ -108,7 +104,7 @@ products.find().exec((err, products) =>
 
 
 
-router.get('/login', function(req, res, next)
+router.get('/login',  function(req, res, next)
 {
 res.render('login');
 
@@ -160,7 +156,7 @@ sellers.findOneAndUpdate({_id: product.Seller_Id}, {$push: {requests: order}}, f
 
 
 
-router.get('/confirm/:_id',  function(req,res, next )    
+router.get('/confirm/:_id', auth,  function(req,res, next )    
   {
     
       orders.findOne({_id: req.params._id}, function(err, order)
@@ -171,7 +167,7 @@ router.get('/confirm/:_id',  function(req,res, next )
 
 
 
-router.get('/confirmed/:_id',  function(req,res, next )    
+router.get('/confirmed/:_id', auth,  function(req,res, next )    
   {
     
       orders.findOneAndDelete({_id: req.params._id}, function(err, order)
@@ -200,7 +196,7 @@ products.findOneAndDelete({_id:order.Product_id}, function(err, order)
 
 
 
-router.get('/edit/:_id',  function(req,res, next )    
+router.get('/edit/:_id', auth,  function(req,res, next )    
   {
     
       sellers.findOne({_id: req.params._id}, function(err, seller)
@@ -211,7 +207,7 @@ router.get('/edit/:_id',  function(req,res, next )
 
 
 
-      router.get('/add/:_id',  function(req,res, next )    
+      router.get('/add/:_id', auth, function(req,res, next )    
   {
     
       sellers.findOne({_id: req.params._id}, function(err, seller)
@@ -221,7 +217,7 @@ router.get('/edit/:_id',  function(req,res, next )
     
   })
 
-router.get('/each/:_id',  function(req,res, next )    
+router.get('/each/:_id', auth,  function(req,res, next )    
   {
     
       products.findOne({_id: req.params._id}, function(err, product)
@@ -233,7 +229,7 @@ router.get('/each/:_id',  function(req,res, next )
     })
 
 
-router.post('/Signup', async function(req, res, next){
+router.post('/Signup', auth, async function(req, res, next){
 	sellers.findOne({phone_no: req.body.phone_no},async function(err, seller)
 		{
 		if(seller)
@@ -338,57 +334,27 @@ router.post('/add',  function(req,res, next )
     
   })
     })
-router.post('/authenticate',
-  passport.authenticate('local',{session: false}),
-  function(req, res) {
+router.post('/authenticate',function(request, response, next) 
+{
+  passport.authenticate('local', function(err, user, info) {
+            if(!user){ console.log(err);}
+            else{
 
-console.log("*************************", req.isAuthenticated())
-
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
- seller= req.user||null;
-  
-    res.render('profile',{seller} );
-  });
-
-
-
-
-/*router.post('/authenticate', async function(req, res, next){
-
- sellers.findOne({phone_no: req.body.phone_no}, function(err, seller)
- 	{
- 		console.log(seller);
- 		if(seller && seller.name === req.body.name)
-
-
- 		{
- 			console.log('User found '); 
-
- 			if(seller && seller.name === req.body.name && seller.password === req.body.password)
- 				{console.log("password matched")
- 			res.render('profile', {seller})
- 		}
- 			else
- 				{
- 					{console.log("password not matched")}
- 			res.render('wrong')
- 		}
-
- 		}
- 		else 
- 				{console.log("user not matched")
- 		res.render('wrong')}
- 			
- 		
-
- 	})
-
-	
+                request.login(user, function(error) {
+                    if (error) return next(error);
+                    seller=request.user;
+                    response.redirect('/home')
+                   
+                });
+  }
 }
-
 )
-*/
+  (request, response, next);});
+
+
+
+
+
 
 
 

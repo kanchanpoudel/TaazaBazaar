@@ -2,9 +2,10 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+
 var logger = require('morgan');
-var session = require('express-session');
+var MongoStore = require("mongo-store")
+
 const passport= require('passport');
 const { check, validationResult } = require('express-validator');
 
@@ -20,11 +21,41 @@ mongoose.connect(config.database);
 
 
 
+
+
 //mongoose.connect('mongodb://localhost/taazabazaar')
 //mongoose.connect('mongodb://Kanch:f5TPESTtzxcp5TPm@taazabazaar-shard-00-00-mnk0t.gcp.mongodb.net:27017,taazabazaar-shard-00-01-mnk0t.gcp.mongodb.net:27017,taazabazaar-shard-00-02-mnk0t.gcp.mongodb.net:27017/test?ssl=true&replicaSet=taazabazaar-shard-0&authSource=admin&retryWrites=true&w=majority', {dbName:'taazabazaar'})
 
 var app = express();
+var session = require("express-session"),
+    bodyParser = require("body-parser");
 
+app.use(express.static("public"));
+app.use(cookieParser('secrettexthere'));
+app.use(session({ secret: 'secrettexthere',
+  saveUninitialized: true,
+  resave: true,
+  
+  // using store session on MongoDB using express-session + connect
+  }));
+
+app.set('trust proxy', 1)
+
+app.use(passport.initialize());
+app.use(passport.session());
+// Add the line below, which you're missing:
+require('./config/passport')(passport);
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+passport.serializeUser(function(user, done) {
+    console.log('in serializeer')
+  done(null, user.id);
+});
+passport.deserializeUser(function(user, done) {
+  console.log("in the deserialize")
+    done(null, user);
+});
 //paassport middleware
 
 // view engine setup
@@ -34,34 +65,21 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser());
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-        saveUninitialized: true
-  
-}))
 
-
-app.get('*', function(req, res, next)
+app.get('*', function(req, res,next)
 {
-
-
-  console.log(req.user)
-
-   res.locals.user= req.user||null;
-  
-  
-  
-  
+  user=req.user||null
+   console.log(user );
+   next()
 })
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //session middleware
-
 
 
 
@@ -73,24 +91,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-//validator middleware
-/*app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
 
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-*/
 
 
 
@@ -119,42 +120,10 @@ module.exports = app;
 
 
 
-var app = express();
-require('./config/passport')(passport);
-app.use(passport.initialize());
-app.use(passport.session());
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-
-        // use passport session
-        
-
-// passport config
 
 
 
-/*const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Kanch:<funny???>@taazabazaar-mnk0t.gcp.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});*/
-
-
+   
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
