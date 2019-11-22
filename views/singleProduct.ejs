@@ -118,7 +118,7 @@
                 <a class="dropdown-item" href="/poultryList">Poultry</a>
                 <a class="dropdown-item" href="/seedsList">Seeds/Saplings</a>
                 
-              </div>
+             
       </li>
       <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sell</a>
@@ -195,24 +195,26 @@
   <form action="/order" class="form-container" method="post">
     <h1>Order Details</h1>
     <input type="hidden" name="_id" value="<%=product._id%>">
+    <input type="hidden" name="proName" value="<%=product.Name%>">
     <label for="name"><b>Your Name</b></label>
-    <input type="text" placeholder="Enter your name" name="Name" required>
+    <input type="text" placeholder="Enter your name" name="Name" value= "Anushka" required>
 
     <label for="phone"><b>Phone no.</b></label>
-    <input type="text" placeholder="Enter Phone no." name="Phone_no" required>
+    <input type="text" placeholder="Enter Phone no." name="Phone_no" value="9874533746" required>
 
     <label for="location"><b>Location</b></label>
-    <input type="text" placeholder="Enter delivery loaction" name="Location" required>
+    <input type="text" placeholder="Enter delivery loaction" name="Location" value= "Kathmandu" required>
 
     <label for="amt"><b>Quantity</b></label>
-    <input type="text" placeholder="Enter delivery amount" name="Amount" required>
+    <input type="text" placeholder="Enter delivery amount" name="Amount" value ="2 kg"  required>
 
     <label for="amt"><b>Within</b></label>
-    <input type="text" placeholder="Enter anticipated time" name="Time" required>
+    <input type="text" placeholder="Enter anticipated time" name="Time" value = "2 days" required>
 
     <button type="submit" class="btn btn-black py-3 px-5" >Confirm</button>
     
   </form>
+
 </div>
 
 <script>

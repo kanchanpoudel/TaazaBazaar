@@ -9,7 +9,7 @@ module.exports = function(passport)
 	passport.use(new LocalStrategy(function(username, password, done)
 	{
 		
-		let query= {phone_no:username};
+		let query= {username:username};
 		seller.findOne(query, function(err, user)
 		{
 
@@ -39,14 +39,7 @@ module.exports = function(passport)
 			})
 		})
 	}))
-passport.serializeUser(function(user, done) {
-		console.log('in serializeer')
-  done(null, user.id);
-});
-passport.deserializeUser(function(user, done) {
-	console.log("in the deserialize")
-    done(null, user);
-});
+
 
 
 }

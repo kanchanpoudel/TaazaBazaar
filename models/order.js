@@ -6,7 +6,8 @@ Name:String,
 Phone:String,
 Amount:String,
 Location:String,
-Time:String
+Time:String,
+ProName:String
 
 
 })

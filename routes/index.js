@@ -14,11 +14,22 @@ var passport =require('passport')
 
 const auth = (req, res, next) => {
   if(req.isAuthenticated()){
-    console.log(req.user)
+    
     next()
   }
   else
-    res.redirect('/')
+  next()
+  
+}
+
+const isauth = (req, res, next) => {
+  if(req.isAuthenticated()){
+    res.redirect('back')
+  
+    
+  }
+  else
+    next()
   
 }
 /* GET home page. */
@@ -32,7 +43,17 @@ router.get('/', function(req, res, next)
  
 res.render('first');
 })
+router.get('/logout', function(req, res, next)
+{
+ req.logout()
+res.redirect('/home');
+})
 
+router.get('/wrong', function(req, res, next)
+{
+ 
+res.render('wrong');
+})
 
 
 router.get('/confirm', function(req, res, next)
@@ -42,13 +63,38 @@ res.render('confirm');
 
 router.get('/profile', auth, function(req, res, next)
 {
-res.render('profile');
+  sellers.findOne({_id:req.user},(err, seller) =>
+  {
+    
+
+    res.render('profile',{seller});
+  }
+  )
+
 })
 
 
-router.get('/register',  function(req, res, next)
+router.get('/register', isauth, function(req, res, next)
 {
 res.render('register');
+
+
+})
+router.get('/blog', isauth, function(req, res, next)
+{
+res.render('blog');
+
+
+})
+router.get('/add',auth,  function(req, res, next)
+{
+res.render('add');
+
+
+})
+router.get('/edit',auth,  function(req, res, next)
+{
+res.render('edit');
 
 
 })
@@ -104,7 +150,7 @@ products.find().exec((err, products) =>
 
 
 
-router.get('/login',  function(req, res, next)
+router.get('/login',isauth,  function(req, res, next)
 {
 res.render('login');
 
@@ -126,7 +172,8 @@ Name:req.body.Name,
 Phone:req.body.Phone_no,
 Amount:req.body.Amount,
 Location:req.body.Location,
-Time:req.body.Time
+Time:req.body.Time,
+ProName:req.body.proName
 
 
 })
@@ -143,7 +190,7 @@ sellers.findOneAndUpdate({_id: product.Seller_Id}, {$push: {requests: order}}, f
       {
       
         
-  res.render('buylist')
+  res.redirect('/buylist')
         
   
   })
@@ -167,17 +214,57 @@ router.get('/confirm/:_id', auth,  function(req,res, next )
 
 
 
-router.get('/confirmed/:_id', auth,  function(req,res, next )    
+router.get('/confirmed/:_id',  function(req,res, next )    
   {
     
-      orders.findOneAndDelete({_id: req.params._id}, function(err, order)
+
+          orders.findOne({_id: req.params._id}, function(err, order)
       {
 
-products.findOneAndDelete({_id:order.Product_id}, function(err, order)
+         
+         sellers.findOneAndUpdate({_id:order.Seller_id},{$pull:{requests:{_id:order._id}}},function(err, seller)
   {
-    console.log("deleted")
-  });
-  sellers.findOneAndUpdate({"_id":order.Seller_id},{$pull:{"requests":{"_id":order._id}}}) 
+
+
+
+  })
+         products.findOne({_id:order.Product_id},function(err, product)
+  {
+
+sellers.findOneAndUpdate({_id:order.Seller_id},{$pull:{nowSelling:{Name:product.Name}}},function(err, seller)
+  {
+
+console.log('>>req deleted');
+
+  })
+product.delete()
+
+  })
+order.delete();
+res.redirect('/profile')
+
+      })
+
+ 
+ 
+  console.log('>>order deleted');
+
+});
+       
+    
+router.get('/out/:_id', auth,  function(req,res, next )    
+  {
+    
+      orders.findOne({_id: req.params._id}, function(err, order)
+      {
+
+
+  sellers.findOneAndUpdate({_id:order.Seller_id},{$pull:{"requests":{_id:order._id}}}, function(res, seller)
+  {
+//db.profiles.findOneAndUpdate({"_id": "5dd5eff50f6968c3f04e074e"},{$pull:{"requests":{"_id":"5dd602f4abf403d1e0537650"}}}
+
+    console.log("deleted from now selling");
+  }) 
 
 
 
@@ -202,18 +289,16 @@ router.get('/edit/:_id', auth,  function(req,res, next )
       sellers.findOne({_id: req.params._id}, function(err, seller)
       {
 
-        res.render('edit', {seller}); })
+        res.rdirect('edit/')
     });
+    })
 
 
 
       router.get('/add/:_id', auth, function(req,res, next )    
   {
     
-      sellers.findOne({_id: req.params._id}, function(err, seller)
-      {
-
-        res.render('add', {seller}); })
+      res.redirect('/add')
     
   })
 
@@ -229,23 +314,23 @@ router.get('/each/:_id', auth,  function(req,res, next )
     })
 
 
-router.post('/Signup', auth, async function(req, res, next){
-	sellers.findOne({phone_no: req.body.phone_no},async function(err, seller)
-		{
-		if(seller)
-		res.render('exists');
+router.post('/Signup', async function(req, res, next){
+  sellers.findOne({phone_no: req.body.phone_no},async function(err, seller)
+    {
+    if(seller)
+    res.render('exists');
 
 
-		else{
+    else{
 var productArr =[req.body.vegetables, req.body.fruits, req.body.poultry, req.body.SeedsandSaplings].filter(x => !! x)
 
-			var seller = new sellers({name: req.body.name , location: req.body.location , phone_no:req.body.phone_no,
-	password:req.body.password, description:req.body.description, products: productArr
+      var seller = new sellers({name: req.body.name , location: req.body.location , username:req.body.phone_no,
+  password:req.body.password, description:req.body.description, products: productArr
 
 })
 
 
-	
+  
 try
 
 {
@@ -258,13 +343,13 @@ seller.password = hash;
   await promise;
   console.log('profile saved', seller)
 
-  res.redirect('login');
+  res.redirect('/login');
 }
 catch(err)
 {
   console.log(err);
 }
-	}
+  }
 })})
 
 var storage = multer.diskStorage({
@@ -285,7 +370,7 @@ var Upload = multer({ storage: storage }).single('file');
 
 
 
-router.post('/Add', Upload, async function(req, res, next){
+router.post('/Add', Upload,auth, async function(req, res, next){
 
 
 
@@ -297,12 +382,18 @@ try
   
  sellers.findOneAndUpdate({_id: req.body._id}, {$push: {nowSelling: data}}, function(err, seller)
       {
+
+        req.login(seller, function(error) {
+                    if (error) return next(error);
+                    seller=req.user;
+                   res.redirect('/profile')
+                });
+        if(err)
+        {
+          console.log(err)
+        }
       
-        products.find().exec((err, products) =>
-  {
-  
-    res.render('add', {seller})
-  })
+        
         
   
   })
@@ -326,18 +417,14 @@ router.post('/updateSeller',  function(req,res, next )
   })
     }) 
 router.post('/add',  function(req,res, next )
-  { console.log(req.body);
-      sellers.findOne({_id: req.body._id}, function(err, seller)
-      {
-        res.render('profile', {seller})
-        
-    
-  })
+  { 
+     res.redirect('/profile')
     })
 router.post('/authenticate',function(request, response, next) 
 {
   passport.authenticate('local', function(err, user, info) {
-            if(!user){ console.log(err);}
+            if(!user){ console.log(err);
+              response.redirect('/wrong')}
             else{
 
                 request.login(user, function(error) {

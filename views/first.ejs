@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>TazaaBazaar</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- fonts: -->
@@ -27,7 +28,56 @@
     <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
+
+
+
+
+      <style type="text/css">
+      
+
+
+      .dropup {
+ position:fixed;
+ bottom: 0px;
+  right: 0px;
+  display: inline-block;
+
+}
+
+.dropup-content {
+  display: none;
+ position:fixed;
+ bottom: 0px;
+  right: 0px;
+  border: 3px solid #f1f1f1;
+ 
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content a:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
+}
+    </style>
   </head>
+  
+  
+
   <body class="goto-here">
     <div class="py-1 bg-primary">
       <div class="container">
@@ -53,6 +103,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <!-- (logo rakhne yaha) -->
+
         <a class="navbar-brand" href="index.html">TazaaBazaar</a>             
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
@@ -60,8 +111,16 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-          
-  <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
+       <% if(user){ %>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+
+
+           <a class="dropdown-item" href="/profile"><%=seller.name%></a> 
+            <a class="dropdown-item" href="/logout">Logout</a></li>
+ <% } %>  
+  <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
  
             
@@ -76,19 +135,31 @@
             <a class="dropdown-item" href="/register">Register</a>
           </div>
           </li>
-            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          
             <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-            <% if(user){ %>
-   <li class="nav-item "><a href="/profile" class="nav-link">Profile</a></li>
- <% } %> 
             
+            
+            <% if(user){ %>
+      
+          <div class="dropup">
+  <button class="btn btn-black py-3 px-5" id="button" style="color: black;
+  background-color:#67AA29;"">Orders</button>
+  <div class="dropup-content">
+    <% seller.requests.forEach(function(seller){ %> 
+    <input type="hidden"  name="_id" value="<%=seller._id%>" >
+              <a  href="/confirm/<%=seller._id%>"><%=seller.Name%>  <%=seller.Amount%></a>
+             <% }) %>
+  
+</div>
+
+ <% } %>
 
           </ul>
         </div>
       </div>
     </nav>
     <!-- END nav -->
+    
 
     <section id="home-section" class="hero">
       <div class="home-slider owl-carousel">
@@ -193,12 +264,12 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-1.jpg);">
+                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url(images/category-2.jpg);">
                   <div class="text px-3 py-1">
                     <h2 class="mb-0"><a href="/fruitsList">Fruits</a></h2>
                   </div>
                 </div>
-                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(images/category-2.jpg);">
+                <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url(images/category-1.jpg);">
                   <div class="text px-3 py-1">
                     <h2 class="mb-0"><a href="/vegetablesList">Vegetables</a></h2>
                   </div>
@@ -272,6 +343,7 @@
               <a href="#" class="img-prod"><img class="img-fluid" src="images/product-2.jpg" alt="Colorlib Template">
                 <div class="overlay"></div>
               </a>
+
               <div class="text py-3 pb-4 px-3 text-center">
                 <h3><a href="#">Strawberry</a></h3>
                 <div class="d-flex">
@@ -469,16 +541,17 @@
         </div>
       </div>
     </section>
+
     
-    <section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
+     <section class="ftco-section img" style="background-image: url(images/bg_3.jpg);">
       <div class="container">
         <div class="row justify-content-end">
           <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
             <span class="subheading">Best Price For You</span>
             <h2 class="mb-4">Deal of the day</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            <p>Far far away, from fresh organic farms in Chitwan.</p>
             <h3><a href="#">Spinach</a></h3>
-            <span class="price">$10 <a href="#">now $5 only</a></span>
+            <span class="price">Rs.10 <a href="#">now Rs.5 only</a></span>
             <div id="timer" class="d-flex mt-5">
               <div class="time" id="days"></div>
               <div class="time pl-3" id="hours"></div>

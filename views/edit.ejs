@@ -50,6 +50,20 @@
         </div>
       </div>
     </div>
+   < % if(user){ %>
+      
+          <div class="dropup">
+  <button class="btn btn-black py-3 px-5" id="button" style="color: black;
+  background-color: transparent;"">Orders</button>
+  <div class="dropup-content">
+    <% seller.requests.forEach(function(seller){ %> 
+    <input type="hidden"  name="_id" value="<%=seller._id%>" >
+              <a  href="/confirm/<%=seller._id%>"><%=seller.Name%>  <%=seller.Amount%></a>
+             <% }) %>
+  
+</div>
+
+ <% } %>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <!-- (logo rakhne yaha) -->
@@ -100,7 +114,7 @@
         <h1>Edit Your Profile</h1>
                     User Name: <br><input type="text" name="seller" value="<%=seller.name%>"><br>
                         
-                    Phone Number: <br> <input type="text" name="phone_no" value="<%=seller.phone_no%>"><br>
+                    Phone Number: <br> <input type="text" name="username" value="<%=seller.username%>"><br>
                         
                     Password: <br> <input type="password" name="password" value="<%=seller.password%>" id ="myInput"><br>
 

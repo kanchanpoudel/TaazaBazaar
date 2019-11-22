@@ -1,54 +1,9 @@
+
+  
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <title>TazaaBazaar</title>
-
-<style type="text/css">
-
-    .form-popup {
-  display: none;
-  position:fixed;
- top: 0px;
-  right: 0px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-
-/* Add styles to the form container */
-.form-container {
-  max-width: 500px;
-  padding: 5px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 5px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
-</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- fonts: -->
@@ -74,6 +29,50 @@
     <link rel="stylesheet" href="/css/flaticon.css">
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
+
+    
+      <style type="text/css">
+      
+
+
+      .dropup {
+ position:fixed;
+ bottom: 0px;
+  right: 0px;
+  display: inline-block;
+
+}
+
+.dropup-content {
+  display: none;
+ position:fixed;
+ bottom: 0px;
+  right: 0px;
+  border: 3px solid #f1f1f1;
+ 
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content a:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
+}
+    </style>
   </head>
   <body class="goto-here">
     <div class="py-1 bg-primary">
@@ -107,7 +106,7 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -115,28 +114,43 @@
                 <a class="dropdown-item" href="/vegetablesList">Vegetables</a>
                 <a class="dropdown-item" href="/poultryList">Poultry</a>
                 <a class="dropdown-item" href="/seedsList">Seeds/Saplings</a>
-                
-              </div>
-      </li>
-      <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sell</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="/login">Login</a>
-            <a class="dropdown-item" href="/register">Register</a>
-          </div>
+
+
+
+              
           </li>
+           <% if(user){ %>
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown04">
+
+
+           <a class="dropdown-item" href="/profile"><%=seller.name%></a> 
+            <a class="dropdown-item" href="/logout">Logout</a></li>
+ <% } %>
             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-            <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+            
 
           </ul>
         </div>
       </div>
+
+         <% if(user){ %>
+      
+          <div class="dropup">
+  <button class="btn btn-black py-3 px-5" id="button" style="color: black;
+  background-color: transparent;"">Orders</button>
+  <div class="dropup-content">
+    <% seller.requests.forEach(function(seller){ %> 
+    <input type="hidden"  name="_id" value="<%=seller._id%>" >
+              <a  href="/confirm/<%=seller._id%>"><%=seller.Name%>  <%=seller.Amount%></a>
+             <% }) %>
+  
+</div>
+
+ <% } %>      
     </nav>
-    <!-- END nav -->
-
-
     <section class="ftco-section">
       <div class="container">
      
@@ -162,6 +176,8 @@
               
               </div>
             </div>
+            
+            
             <button style="margin-left: 120px"  class="btn btn-black py-3 px-5"  ><a href="/confirmed/<%=order._id%>"> Confirm</a></button>
           </div>
         </div>
