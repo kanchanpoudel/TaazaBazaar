@@ -28,7 +28,7 @@ module.exports = function(passport)
 				if(isMatch)
 				{
 
-
+console.log("checking.....")
 					return done(null, user);
 
 				}

@@ -12,15 +12,7 @@ var passport =require('passport')
 
 
 
-const auth = (req, res, next) => {
-  if(req.isAuthenticated()){
-    
-    next()
-  }
-  else
-  next()
-  
-}
+
 
 const isauth = (req, res, next) => {
   if(req.isAuthenticated()){
@@ -261,7 +253,7 @@ router.get('/out/:_id', auth,  function(req,res, next )
 
   sellers.findOneAndUpdate({_id:order.Seller_id},{$pull:{"requests":{_id:order._id}}}, function(res, seller)
   {
-//db.profiles.findOneAndUpdate({"_id": "5dd5eff50f6968c3f04e074e"},{$pull:{"requests":{"_id":"5dd602f4abf403d1e0537650"}}}
+
 
     console.log("deleted from now selling");
   }) 
@@ -351,6 +343,9 @@ catch(err)
 }
   }
 })})
+
+
+
 
 var storage = multer.diskStorage({
   destination: "./public/uploads/",
