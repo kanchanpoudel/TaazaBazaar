@@ -350,7 +350,7 @@ catch(err)
 var storage = multer.diskStorage({
   destination: "./public/uploads/",
   filename: function (req, file, cb) {
-    cb(null, req.body.name+ '-' + Date.now() )
+    cb(null, '-' + Date.now()+path.extname(file.originalname) )
   }
 })
 
